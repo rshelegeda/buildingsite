@@ -1,0 +1,74 @@
+<!-- angars.html  -->
+
+<!DOCTYPE html>
+<html lang="uk"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-translate="page-title-angars">Будівництво ангарів, цехів, складів, зерносховищ.</title>
+    <link rel="stylesheet" href="./../styles.css">
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="header-content">
+            <div  class="logo">(050) 381 72 64</div>
+            <nav>
+                <a href="/" data-translate="menu-golovna">ГОЛОВНА</a>
+                <a href="../poslugi.html" data-translate="menu-services">ПОСЛУГИ</a>
+                <a href="../galery.html" data-translate="menu-galery">ГАЛЕРЕЯ</a>
+                <a href="../contacts.html" data-translate="menu-contacts">КОНТАКТИ</a>                
+            </nav>
+            <div class="language-switcher">
+                <button id="lang-uk" data-lang="uk">UK</button>
+                <button id="lang-ru" data-lang="ru">RU</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="sections-container">
+        <section class="section" id="section-1">
+            <div class="content">
+                <h1 data-translate="poslugi-angari-h1">Будівництво ангарів, цехів, складів, зерносховищ</h1>
+                <p data-translate="section1-p1">ЧЕРКАСИ, ЧЕРКАСЬКА ОБЛАСТЬ ТА ІНШІ РЕГІОНИ УКРАЇНИ</p> 
+                <p data-translate="section1-p2">БІЛЬШ ІНФОРМАЦІЇ НИЖЧЕ</p>
+            </div>        
+        </section>          
+    </div>
+    <script src="./../language.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+            const container = document.querySelector('.sections-container');
+
+            // Функция для определения активной секции
+            function setActiveSection() {
+                const containerRect = container.getBoundingClientRect();
+                const containerTop = -containerRect.top;
+                const containerHeight = containerRect.height;
+
+                // Находим секцию, которая находится в центре экрана
+                sections.forEach(section => {
+                    const sectionRect = section.getBoundingClientRect();
+                    const sectionTop = sectionRect.top - containerRect.top;
+                    const sectionBottom = sectionRect.bottom - containerRect.top;
+
+                    // Если секция занимает больше 50% видимой области
+                    if (sectionTop <= containerHeight / 2 && sectionBottom >= containerHeight / 2) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            }
+
+            // Устанавливаем активную секцию при загрузке
+            setActiveSection();
+
+            // Обновляем активную секцию при прокрутке
+            container.addEventListener('scroll', setActiveSection);
+        });
+    </script>
+
+</body>
+
+</html>

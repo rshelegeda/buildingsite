@@ -1,0 +1,131 @@
+<!-- index.html  -->
+
+<!DOCTYPE html>
+<html lang="uk"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- <link rel="icon" href="/icon.svg" type="image/svg+xml"> <link rel="apple-touch-icon" href="/apple-touch-icon.png"> -->
+
+    <title data-translate="page-title">Будівництво та реконструкція Черкаси. Будівельно-монтажні роботи.</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="alternate" hreflang="uk" href="https://site.com/index.html?lang=uk" />
+    <link rel="alternate" hreflang="ru" href="https://site.com/index.html?lang=ru" />
+    <link rel="alternate" hreflang="x-default" href="https://site.com/index.html" /> -->
+</head>
+
+<body>
+    <header id="site-header">
+        <div class="header-content">
+            <div  class="logo">(050) 381 72 64</div>
+            <nav>
+                <a href="index.html" data-translate="menu-golovna">ГОЛОВНА</a>
+                <a href="poslugi.html" data-translate="menu-services">ПОСЛУГИ</a>
+                <a href="galery.html" data-translate="menu-galery">ГАЛЕРЕЯ</a>
+                <a href="contacts.html" data-translate="menu-contacts">КОНТАКТИ</a>                
+            </nav>
+            <div class="language-switcher">
+                <button id="lang-uk" data-lang="uk">UK</button>
+                <button id="lang-ru" data-lang="ru">RU</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="sections-container">
+        <section class="section" id="section-1">
+            <div class="content">
+                <h1 data-translate="section1-h1">БУДІВЕЛЬНІ ПОСЛУГИ, РЕКОНСТРУКЦІЯ, ГЕНПІДРЯД</h1>
+                <p data-translate="section1-p1">ЧЕРКАСИ, ЧЕРКАСЬКА ОБЛАСТЬ ТА ІНШІ РЕГІОНИ УКРАЇНИ</p> 
+                <p data-translate="section1-p2">БІЛЬШ ІНФОРМАЦІЇ НИЖЧЕ</p>
+            </div>        
+        </section>
+
+        <section class="section" id="section-2">
+            <div class="content">
+                <h2 data-translate="section2-h2">ВИГОТОВЛЕННЯ ТА МОНТАЖ МЕТАЛЛОКОНСТРУКЦІЙ</h2>
+                <p><a href="#" data-translate="section2-p">Виготовлення та монтаж колонн, балок, ферм, прогонів</a></p>
+                <div class="button-onContent">
+                <p><a href="galery.html" data-translate="more-details">ДЕТАЛЬНІШЕ</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section-3">
+            <div class="content">
+                <h2 data-translate="section3-h2">ВЛАШТУВАННЯ ФУНДАМЕНТІВ</h2>
+                <p><a href="#" data-translate="section3-p">Ленточні, плитні, пальові фундаменти</a></p>
+                <div class="button-onContent">
+                <p><a href="galery.html" data-translate="more-details">ДЕТАЛЬНІШЕ</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section-4">
+            <div class="content">
+                <h2 data-translate="section4-h2">ГЕОДЕЗІЯ В БУДІВНИЦТВІ</h2>
+                <p><a href="#" data-translate="section4-p">Винос осей, точок, висотних позначок, розбивка</a></p>
+                <div class="button-onContent">
+                <p><a href="galery.html" data-translate="more-details">ДЕТАЛЬНІШЕ</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section-5">
+            <div class="content">
+                <h2 data-translate="section5-h2">РЕКОНСТРУКЦІЯ ВИРОБНИЧИХ ПРИМІЩЕНЬ</h2>
+                <p data-translate="section5-p">Реконструкція та ремонт виробничих будівель, приміщень</p>
+                <div class="button-onContent">
+                <p><a href="galery.html" data-translate="more-details">ДЕТАЛЬНІШЕ</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="section-6">
+              <div class="content">
+                <h2 data-translate="section6-h2">ПРОМИСЛОВІ ПІДЛОГИ </h2>
+                <p><a href="#" data-translate="section6-p">Промислові бетонні підлоги з топпингом</a></p>
+                <div class="button-onContent">
+                <p><a href="galery.html" data-translate="more-details">ДЕТАЛЬНІШЕ</a></p>
+                </div>          
+            </div>
+        </section>           
+    </div>
+    <script src="language.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+            const container = document.querySelector('.sections-container');
+
+            // Функция для определения активной секции
+            function setActiveSection() {
+                const containerRect = container.getBoundingClientRect();
+                const containerTop = -containerRect.top;
+                const containerHeight = containerRect.height;
+
+                // Находим секцию, которая находится в центре экрана
+                sections.forEach(section => {
+                    const sectionRect = section.getBoundingClientRect();
+                    const sectionTop = sectionRect.top - containerRect.top;
+                    const sectionBottom = sectionRect.bottom - containerRect.top;
+
+                    // Если секция занимает больше 50% видимой области
+                    if (sectionTop <= containerHeight / 2 && sectionBottom >= containerHeight / 2) {
+                        section.classList.add('active');
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+            }
+
+            // Устанавливаем активную секцию при загрузке
+            setActiveSection();
+
+            // Обновляем активную секцию при прокрутке
+            container.addEventListener('scroll', setActiveSection);
+        });
+    </script>
+
+</body>
+
+</html>
